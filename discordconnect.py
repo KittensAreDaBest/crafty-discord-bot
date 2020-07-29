@@ -72,21 +72,21 @@ async def send(ctx, arg, *arg4):
     else:
         await ctx.channel.send("You do not have permission to run this command.")
 
-@client.command()
-async def alert(ctx, *arg5):
-    str = convertTuple(arg5)
-    argexe = "5"
-    alertas = "alert"
-    output = (alertas + " " + str)
-    role = discord.utils.get(ctx.guild.roles, name=craftyperms)
-    if role in ctx.author.roles:
-        sendembedalert = discord.Embed(title="Crafty Alert Execution", color=0x31c4b3)
-        sendembedalert.add_field(name="Command", value=str, inline=True)
-        sendembedalert.add_field(name="Action Sucessful?", value=cweb.run_command(argexe, output), inline=True)
-        sendembedalert.add_field(name="Requested by", value=ctx.message.author.mention, inline=True)
-        await ctx.send(embed=sendembedalert)
-    else:
-        await ctx.channel.send("You do not have permission to run this command.")
+# @client.command() # this command is commented out because of no proxy server on ID 5
+# async def alert(ctx, *arg5):
+#     str = convertTuple(arg5)
+#     argexe = "5"
+#     alertas = "alert"
+#     output = (alertas + " " + str)
+#     role = discord.utils.get(ctx.guild.roles, name=craftyperms)
+#     if role in ctx.author.roles:
+#         sendembedalert = discord.Embed(title="Crafty Alert Execution", color=0x31c4b3)
+#         sendembedalert.add_field(name="Command", value=str, inline=True)
+#         sendembedalert.add_field(name="Action Sucessful?", value=cweb.run_command(argexe, output), inline=True)
+#         sendembedalert.add_field(name="Requested by", value=ctx.message.author.mention, inline=True)
+#         await ctx.send(embed=sendembedalert)
+#     else:
+#         await ctx.channel.send("You do not have permission to run this command.")
 
 @client.command()
 async def backup(ctx, args):
