@@ -61,6 +61,7 @@ Go to Line 239 and add your first server. Use this as a example [ONLY IF YOU ARE
             
 This Line is for your last Server
                                                             WHERE IT SAYS serverid: 2, you will need to change it to the first word of your last server name
+                                                            
         serverid1info = re.findall(r'serverid: 1(.*?)serverid: 2',str(datavaluesassembled)) # this says to find text between server id 1 and 2
         serverid1assembled = ''.join(map(str, serverid1info)) 
 
@@ -88,6 +89,7 @@ If you require or would like to look at a further example. Look at furtherexampl
 Go to Line 239 and add your first server. Use this as a example
 Use this code if you are only hosting a single server on the crafty panel
                                                             WHERE IT SAYS serverid: 2, you will need to change it to the first word of your last server name
+                                                            
         serverid1info = re.findall(r'serverid: 1(.*?)serverid: 2',str(datavaluesassembled)) # this says to find text between server id 1 and 2
         serverid1assembled = ''.join(map(str, serverid1info)) 
 
