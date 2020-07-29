@@ -153,14 +153,3 @@ To start the bot up, open a cmd window in its directory and type
 Once it starts check the channel you provided for the start message and see if this has popped up
 
 <img width="540" alt="start messagee" src="https://user-images.githubusercontent.com/60989180/88817934-7b151180-d201-11ea-83d9-ecfa8966b7f4.png">
-
-Shield: [![CC BY 4.0][cc-by-shield]][cc-by]
-
-This work is licensed under a
-[Creative Commons Attribution 4.0 International License][cc-by].
-
-[![CC BY 4.0][cc-by-image]][cc-by]
-
-[cc-by]: http://creativecommons.org/licenses/by/4.0/
-[cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
-[cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
