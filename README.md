@@ -127,3 +127,7 @@ Use this code if you are only hosting a single server on the crafty panel
             embedstatus.add_field(name="Survival", value="ID 1 Survival Server Status: Stopped", inline=False)
         if srvcrashed in survivalassembled:
             embedstatus.add_field(name="Survival", value="ID 1 Survival Server Status: Crashed", inline=False
+            
+# starting bot
+To start the bot up, open a cmd window in its directory and type
+        python discordconnect.py
