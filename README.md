@@ -1,6 +1,9 @@
 # crafty-discord-bot
 A discord bot using the crafty-client API to control Crafty Controller
 
+# need-help
+Need any help? If so, contact CatsAreDaBest#3054
+
 # requirements
 discord.py installed
 
