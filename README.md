@@ -15,7 +15,7 @@ Discord Channel
 
 Crafty Controller API Token
 
-Knowledge in Python
+Knowledge in Python and how to change variables in Python
 
 # what can it do?
 This bot can do many commands
@@ -151,4 +151,5 @@ Use this code if you are only hosting a single server on the crafty panel
 To start the bot up, open a cmd window in its directory and type
         python discordconnect.py
 Once it starts check the channel you provided for the start message and see if this has popped up
+
 <img width="540" alt="start messagee" src="https://user-images.githubusercontent.com/60989180/88817934-7b151180-d201-11ea-83d9-ecfa8966b7f4.png">
