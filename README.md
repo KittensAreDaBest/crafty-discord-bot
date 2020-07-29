@@ -3,36 +3,53 @@ A discord bot using the crafty-client API to control Crafty Controlleer
 
 # requirements
 discord.py installed
+
 Discord Bot Token
+
 Discord Role
+
 Discord Channel
+
 Crafty Controller API Token
-Knowledge
+
+Knowledge in Python
 
 # what can it do?
 This bot can do many commands
+
 !serverinfo
 Lists all of the Servers and their CPU Usage, Memory Usage and Player Count.
+
 !hoststat
 Lists the total CPU Usage, Memory Usage and Disk Usage of the Host.
+
 !help
 Shows commands
+
 !start [ID]
 Starts the server with the supplied ID
+
 !stop [ID]
 Stops the server with the supplied ID
+
 !restart [ID]
 Restarts the server with the supplied ID
+
 !backup [ID]
 Backups the server with the supplied ID
+
 !send [ID] [Command]
 Sends the Command to the server with the supplied ID and Command
 
 # installation
 Firstly Supply the URL to the Crafty Controller Server
+
 Then Supply the Crafty Controller API Token
+
 Then Supply the Discord Bot Token
+
 Supply the Discord Channel [ID FORM] for the bot to execute its start command
+
 Then supply a Discord Role [NAME] which the bot will consider allowed to run admin commands
 
 # MUTIPLE SERVERS
