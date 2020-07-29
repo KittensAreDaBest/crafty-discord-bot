@@ -23,26 +23,42 @@ This bot can do many commands
 !serverinfo
 Lists all of the Servers and their CPU Usage, Memory Usage and Player Count.
 
-!hoststat
+<img width="556" alt="serverinfo" src="https://user-images.githubusercontent.com/60989180/88817930-7a7c7b00-d201-11ea-9a71-39e69681cd93.png">
+
+!hostinfo
 Lists the total CPU Usage, Memory Usage and Disk Usage of the Host.
+
+<img width="346" alt="hostinfo" src="https://user-images.githubusercontent.com/60989180/88817951-7f412f00-d201-11ea-89d6-53f999b8452a.png">
 
 !help
 Shows commands
 
+<img width="218" alt="help" src="https://user-images.githubusercontent.com/60989180/88817948-7ea89880-d201-11ea-9bf1-d7fcca151f32.png">
+
 !start [ID]
 Starts the server with the supplied ID
+
+<img width="340" alt="start" src="https://user-images.githubusercontent.com/60989180/88817939-7bada800-d201-11ea-9c75-18de65ebb8b7.png">
 
 !stop [ID]
 Stops the server with the supplied ID
 
+<img width="336" alt="stop" src="https://user-images.githubusercontent.com/60989180/88817941-7bada800-d201-11ea-9987-287da967d83e.png">
+
 !restart [ID]
 Restarts the server with the supplied ID
+
+<img width="356" alt="restart" src="https://user-images.githubusercontent.com/60989180/88817927-76e8f400-d201-11ea-83f2-fb4d4fc22ebe.png">
 
 !backup [ID]
 Backups the server with the supplied ID
 
+<img width="413" alt="backup" src="https://user-images.githubusercontent.com/60989180/88817947-7e100200-d201-11ea-9a03-78b73afb5071.png">
+
 !send [ID] [Command]
 Sends the Command to the server with the supplied ID and Command
+
+<img width="318" alt="send" src="https://user-images.githubusercontent.com/60989180/88817929-79e3e480-d201-11ea-9e89-4b91870fa728.png">
 
 # installation
 Firstly Supply the URL to the Crafty Controller Server
@@ -134,3 +150,5 @@ Use this code if you are only hosting a single server on the crafty panel
 # starting bot
 To start the bot up, open a cmd window in its directory and type
         python discordconnect.py
+Once it starts check the channel you provided for the start message and see if this has popped up
+<img width="540" alt="start messagee" src="https://user-images.githubusercontent.com/60989180/88817934-7b151180-d201-11ea-83d9-ecfa8966b7f4.png">
