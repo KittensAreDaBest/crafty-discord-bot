@@ -72,7 +72,7 @@ Supply the Discord Channel [ID FORM] for the bot to execute its start command
 Then supply a Discord Role [NAME] which the bot will consider allowed to run admin commands
 
 # MUTIPLE SERVERS
-Go to Line 239 and add your first server. Use this as a examplem Also make sure to adjust variables as needed. [ONLY IF YOU ARE USING MUTIPLE SERVERS, SINGLE SERVER CODE BELOW]. 
+Go to Line 274 and add your first server. Use this as a examplem Also make sure to adjust variables as needed. [ONLY IF YOU ARE USING MUTIPLE SERVERS, SINGLE SERVER CODE BELOW]. 
 
     # name of server id 1
     serverid1name = "Survival"
@@ -148,7 +148,7 @@ WHERE IT SAYS Proxy, you will need to change it to the first word of your last s
 If you require or would like to look at a further example. Look at furtherexample.py
             
 # SINGLE SERVER
-Go to Line 239 and add your first server. Use this as a example
+Go to Line 274 and add your first server. Use this as a example
 Use this code if you are only hosting a single server on the crafty panel
 WHERE IT SAYS serverid: 2, you will need to change it to the first word of your server name and chane serverid1name to your server
                                                             
