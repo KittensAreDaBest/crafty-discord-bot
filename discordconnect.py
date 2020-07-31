@@ -177,8 +177,8 @@ async def hostinfo(message):
         hostdata = cweb.get_host_stats_pc()
 
         nodotto = string.punctuation
-        nodotto = remove.replace(".", "")
-        datastripnodot = str.maketrans("", "", r"[{}]".format(nodotto))
+        nodottoaf = nodotto.replace(".", "")
+        datastripnodot = str.maketrans("", "", r"[{}]".format(nodottoaf))
 
         datastrip = str.maketrans("", "", datastripnodot)
 
