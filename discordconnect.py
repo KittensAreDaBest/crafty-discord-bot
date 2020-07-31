@@ -175,12 +175,14 @@ async def hostinfo(message):
     else:
         embedhoststatus = discord.Embed(title="Crafty Host Info", color=0x31c4b3)
         hostdata = cweb.get_host_stats_pc()
-        hostcpu = re.findall(r'cpu_usage(.*?),', str(hostdata))
-        punctuationwittdot = "#$%&'()*+,-/:;<=>?@[\]^_`{|}~"
-        datastrip = str.maketrans("", "", punctuationwittdot)
 
-        cpustripped = [w.translate(datastrip) for w in hostcpu]
-        cpuassembled = " ".join(cpustripped)
+        nodotto = string.punctuation
+        nodotto = remove.replace(".", "")
+        datastripnodot = str.maketrans("", "", r"[{}]".format(nodotto))
+
+        datastrip = str.maketrans("", "", datastripnodot)
+
+        cpuassembled = " ".join([w.translate(datastrip) for w in re.findall(r'cpu_usage(.*?),', str(hostdata))])
 
         embedhoststatus.add_field(name="CPU", value="CPU Usage" + cpuassembled + "%", inline=False)
 
@@ -188,14 +190,11 @@ async def hostinfo(message):
         hostmemused = re.findall(r'mem_usage(.*?),', str(hostdata))
         hostmemall = re.findall(r'mem_total(.*?),', str(hostdata))
 
-        memstripped = [w.translate(datastrip) for w in hostmem]
-        memassembled = " ".join(memstripped)
+        memassembled = " ".join([w.translate(datastrip) for w in hostmem])
 
-        memusedstripped = [w.translate(datastrip) for w in hostmemused]
-        memusedassembled = " ".join(memusedstripped)
+        memusedassembled = " ".join([w.translate(datastrip) for w in hostmemused])
 
-        memallstripped = [w.translate(datastrip) for w in hostmemall]
-        memallassembled = " ".join(memallstripped)
+        memallassembled = " ".join([w.translate(datastrip) for w in hostmemall])
 
         embedhoststatus.add_field(name="Memory Used",
                                   value="Memory Usage" + memassembled + "%" + memusedassembled + " Used out of" + memallassembled,
@@ -205,14 +204,11 @@ async def hostinfo(message):
         hostdiskused = re.findall(r'disk_usage(.*?),', str(hostdata))
         hostdisktotal = re.findall(r'disk_total(.*?)}', str(hostdata))
 
-        diskstripped = [w.translate(datastrip) for w in hostdisk]
-        diskassembled = " ".join(diskstripped)
+        diskassembled = " ".join([w.translate(datastrip) for w in hostdisk])
 
-        diskusedstripped = [w.translate(datastrip) for w in hostdiskused]
-        diskusedassembled = " ".join(diskusedstripped)
+        diskusedassembled = " ".join([w.translate(datastrip) for w in hostdiskused])
 
-        disktotalstripped = [w.translate(datastrip) for w in hostdisktotal]
-        disktotalassembled = " ".join(disktotalstripped)
+        disktotalassembled = " ".join([w.translate(datastrip) for w in hostdisktotal])
 
         embedhoststatus.add_field(name="Disk Used",
                                   value="Disk Usage" + diskassembled + "%" + diskusedassembled + " Used out of" + disktotalassembled,
