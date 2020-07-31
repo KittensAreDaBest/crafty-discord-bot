@@ -61,15 +61,17 @@ Sends the Command to the server with the supplied ID and Command
 <img width="318" alt="send" src="https://user-images.githubusercontent.com/60989180/88817929-79e3e480-d201-11ea-9e89-4b91870fa728.png">
 
 # installation
-Firstly Supply the URL to the Crafty Controller Server
+1.Supply the URL to the Crafty Controller Server
 
-Then Supply the Crafty Controller API Token
+2.Supply the Crafty Controller API Token
 
-Then Supply the Discord Bot Token
+3.Supply the Discord Bot Token
 
-Supply the Discord Channel [ID FORM] for the bot to execute its start command
+4.the Discord Channel [ID FORM] for the bot to execute its start command
 
-Then supply a Discord Role [NAME] which the bot will consider allowed to run admin commands
+5.supply a Discord Role [NAME] which the bot will consider allowed to run admin commands
+
+6.Supply servers [Example and instructions can be found below]
 
 # MUTIPLE SERVERS
 Go to Line 274 and add your first server. Use this as a examplem Also make sure to adjust variables as needed. [ONLY IF YOU ARE USING MUTIPLE SERVERS, SINGLE SERVER CODE BELOW]. 
