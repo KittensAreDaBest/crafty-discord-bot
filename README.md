@@ -72,80 +72,119 @@ Supply the Discord Channel [ID FORM] for the bot to execute its start command
 Then supply a Discord Role [NAME] which the bot will consider allowed to run admin commands
 
 # MUTIPLE SERVERS
-Go to Line 239 and add your first server. Use this as a example [ONLY IF YOU ARE USING MUTIPLE SERVERS]
+Go to Line 239 and add your first server. Use this as a examplem Also make sure to adjust variables as needed. [ONLY IF YOU ARE USING MUTIPLE SERVERS, SINGLE SERVER CODE BELOW]. 
 
-        serverid1info = re.findall(r'serverid: 1(.*?)serverid: 2',str(datavaluesassembled)) # this says to find text between server id 1 and 2
-        serverid1assembled = ''.join(map(str, serverid1info)) 
+          # name of server id 1
+    serverid1name = "Survival"
 
-        datasurvival = re.findall(r'Survival(.*?)},',str(data)) # this is to find the status of the server named "Survival Server"
-        survivalstripped = [w.translate(datastrip) for w in datasurvival]
-        survivalassembled = " ".join(survivalstripped)
+    # this is attempt of cleaning the code up by making it smaller, this finds the online status of the server
+    serverid1 = " ".join([w.translate(datastrip) for w in re.findall(r'Survival(.*?)},', str(data))])
 
-        SURVCPU = re.findall(r'cpuusage:(.*?)memoryusage',str(serverid1assembled)) # this is to find the data of the CPU Usage for ID 1
-        SURVCPUASSEMBLED = ''.join(map(str, SURVCPU))
-        SURVMEM = re.findall(r'memoryusage:(.*?)maxplayers',str(serverid1assembled)) # this is to find the data of the Memory Usage for ID 1
-        SURVMEMASSEMBLED = ''.join(map(str, SURVMEM))
-        SURVPLAYERS = re.findall(r'onlineplayers:(.*?)players',str(serverid1assembled)) # this is to find the data of how many Players are on the server for ID 1
-        SURVPLAYERSASSEMBLED = ''.join(map(str, SURVPLAYERS))
+    # this for grabbing server stats
+    serverid1info = re.findall(r'serverid: 1(.*?)serverid: 2', str(datavaluesassembled))
+    serverid1assembled = ''.join(map(str, serverid1info))
 
-        if srvrunning in survivalassembled:
-            embedstatus.add_field(name="Survival", value="ID 1 Survival Server Status: Online CPU Usage:" + SURVCPUASSEMBLED +"% Memory:" + SURVMEMASSEMBLED + " Players Online:" + SURVPLAYERSASSEMBLED, inline=False)
-        if srvstopped in survivalassembled:
-            embedstatus.add_field(name="Survival", value="ID 1 Survival Server Status: Stopped", inline=False)
-        if srvcrashed in survivalassembled:
-            embedstatus.add_field(name="Survival", value="ID 1 Survival Server Status: Crashed", inline=False
+    # find cpu from cweb.get_host_stats_server
+    serverid1cpudata = re.findall(r'cpuusage:(.*?)memoryusage', str(serverid1assembled))
+    serverid1cpu = ''.join(map(str, serverid1cpudata))
+
+    # find mem from cweb.get_host_stats_server
+    serverid1memdata = re.findall(r'memoryusage:(.*?)maxplayers', str(serverid1assembled))
+    serverid1mem = ''.join(map(str, serverid1memdata))
+
+    # find players from cweb.get_host_stats_server
+    serverid1playerdata = re.findall(r'onlineplayers:(.*?)players', str(serverid1assembled))
+    serverid1player = ''.join(map(str, serverid1playerdata))
+
+    # checks what status it is and then selects the right status
+    if srvrunning in serverid1:
+        embedstatus.add_field(name=serverid1name,
+                              value="ID 1 " + serverid1name + " Server Status: Online CPU Usage:" + serverid1cpu + "% Memory:" + serverid1mem + " Players Online:" + serverid1player,
+                              inline=False)
+    if srvstopped in serverid1:
+        embedstatus.add_field(name=serverid1name, value="ID 1 " + serverid1name + " Server Status: Stopped",
+                              inline=False)
+    if srvcrashed in serverid1:
+        embedstatus.add_field(name=serverid1name, value="ID 1 " + serverid1name + " Server Status: Crashed",
+                              inline=False)
             
 This Line is for your last Server
-                                                            WHERE IT SAYS serverid: 2, you will need to change it to the first word of your last server name
+WHERE IT SAYS Proxy, you will need to change it to the first word of your last server name, also make sure to adjust the varibles as needed
                                                             
-        serverid1info = re.findall(r'serverid: 1(.*?)serverid: 2',str(datavaluesassembled)) # this says to find text between server id 1 and 2
-        serverid1assembled = ''.join(map(str, serverid1info)) 
+    # name of server id 5
+    serverid5name = "Proxy"
 
-        datasurvival = re.findall(r'Survival(.*?)},',str(data)) # this is to find the status of the server named "Survival Server"
-        survivalstripped = [w.translate(datastrip) for w in datasurvival]
-        survivalassembled = " ".join(survivalstripped)
+    # this is attempt of cleaning the code up by making it smaller, this finds the online status of the server
+    serverid5 = " ".join([w.translate(datastrip) for w in re.findall(r'Proxy(.*?)]', str(data))])
 
-        SURVCPU = re.findall(r'cpuusage:(.*?)memoryusage',str(serverid1assembled)) # this is to find the data of the CPU Usage for ID 1
-        SURVCPUASSEMBLED = ''.join(map(str, SURVCPU))
-        SURVMEM = re.findall(r'memoryusage:(.*?)maxplayers',str(serverid1assembled)) # this is to find the data of the Memory Usage for ID 1
-        SURVMEMASSEMBLED = ''.join(map(str, SURVMEM))
-        SURVPLAYERS = re.findall(r'onlineplayers:(.*?)players',str(serverid1assembled)) # this is to find the data of how many Players are on the server for ID 1
-        SURVPLAYERSASSEMBLED = ''.join(map(str, SURVPLAYERS))
+    # this for grabbing server stats
+    serverid5info = re.findall(r'serverid: 5(.*?)Proxy', str(datavaluesassembled))
+    serverid5assembled = ''.join(map(str, serverid5info))
 
-        if srvrunning in survivalassembled:
-            embedstatus.add_field(name="Survival", value="ID 1 Survival Server Status: Online CPU Usage:" + SURVCPUASSEMBLED +"% Memory:" + SURVMEMASSEMBLED + " Players Online:" + SURVPLAYERSASSEMBLED, inline=False)
-        if srvstopped in survivalassembled:
-            embedstatus.add_field(name="Survival", value="ID 1 Survival Server Status: Stopped", inline=False)
-        if srvcrashed in survivalassembled:
-            embedstatus.add_field(name="Survival", value="ID 1 Survival Server Status: Crashed", inline=False
+    # find cpu from cweb.get_host_stats_server
+    serverid5cpudata = re.findall(r'cpuusage:(.*?)memoryusage', str(serverid5assembled))
+    serverid5cpu = ''.join(map(str, serverid5cpudata))
+
+    # find mem from cweb.get_host_stats_server
+    serverid5memdata = re.findall(r'memoryusage:(.*?)maxplayers', str(serverid5assembled))
+    serverid5mem = ''.join(map(str, serverid5memdata))
+
+    # find players from cweb.get_host_stats_server
+    serverid5playerdata = re.findall(r'onlineplayers:(.*?)players', str(serverid5assembled))
+    serverid5player = ''.join(map(str, serverid5playerdata))
+
+    # checks what status it is and then selects the right status
+    if srvrunning in serverid5:
+        embedstatus.add_field(name=serverid5name,
+                              value="ID 5 " + serverid5name + " Server Status: Online CPU Usage:" + serverid5cpu + "% Memory:" + serverid5mem + " Players Online:" + serverid5player,
+                              inline=False)
+    if srvstopped in serverid5:
+        embedstatus.add_field(name=serverid5name, value="ID 5 " + serverid5name + " Server Status: Stopped",
+                              inline=False)
+    if srvcrashed in serverid5:
+        embedstatus.add_field(name=serverid5name, value="ID 5 " + serverid5name + " Server Status: Crashed",
+                              inline=False)
             
 If you require or would like to look at a further example. Look at furtherexample.py
             
 # SINGLE SERVER
 Go to Line 239 and add your first server. Use this as a example
 Use this code if you are only hosting a single server on the crafty panel
-                                                            WHERE IT SAYS serverid: 2, you will need to change it to the first word of your last server name
+WHERE IT SAYS serverid: 2, you will need to change it to the first word of your server name and chane serverid1name to your server
                                                             
-        serverid1info = re.findall(r'serverid: 1(.*?)serverid: 2',str(datavaluesassembled)) # this says to find text between server id 1 and 2
-        serverid1assembled = ''.join(map(str, serverid1info)) 
+    # name of server id 1
+    serverid1name = "Survival"
 
-        datasurvival = re.findall(r'Survival(.*?)},',str(data)) # this is to find the status of the server named "Survival Server"
-        survivalstripped = [w.translate(datastrip) for w in datasurvival]
-        survivalassembled = " ".join(survivalstripped)
+    # this is attempt of cleaning the code up by making it smaller, this finds the online status of the server
+    serverid1 = " ".join([w.translate(datastrip) for w in re.findall(r'Survival(.*?)},', str(data))])
 
-        SURVCPU = re.findall(r'cpuusage:(.*?)memoryusage',str(serverid1assembled)) # this is to find the data of the CPU Usage for ID 1
-        SURVCPUASSEMBLED = ''.join(map(str, SURVCPU))
-        SURVMEM = re.findall(r'memoryusage:(.*?)maxplayers',str(serverid1assembled)) # this is to find the data of the Memory Usage for ID 1
-        SURVMEMASSEMBLED = ''.join(map(str, SURVMEM))
-        SURVPLAYERS = re.findall(r'onlineplayers:(.*?)players',str(serverid1assembled)) # this is to find the data of how many Players are on the server for ID 1
-        SURVPLAYERSASSEMBLED = ''.join(map(str, SURVPLAYERS))
+    # this for grabbing server stats
+    serverid1info = re.findall(r'serverid: 1(.*?)serverid: 2', str(datavaluesassembled))
+    serverid1assembled = ''.join(map(str, serverid1info))
 
-        if srvrunning in survivalassembled:
-            embedstatus.add_field(name="Survival", value="ID 1 Survival Server Status: Online CPU Usage:" + SURVCPUASSEMBLED +"% Memory:" + SURVMEMASSEMBLED + " Players Online:" + SURVPLAYERSASSEMBLED, inline=False)
-        if srvstopped in survivalassembled:
-            embedstatus.add_field(name="Survival", value="ID 1 Survival Server Status: Stopped", inline=False)
-        if srvcrashed in survivalassembled:
-            embedstatus.add_field(name="Survival", value="ID 1 Survival Server Status: Crashed", inline=False
+    # find cpu from cweb.get_host_stats_server
+    serverid1cpudata = re.findall(r'cpuusage:(.*?)memoryusage', str(serverid1assembled))
+    serverid1cpu = ''.join(map(str, serverid1cpudata))
+
+    # find mem from cweb.get_host_stats_server
+    serverid1memdata = re.findall(r'memoryusage:(.*?)maxplayers', str(serverid1assembled))
+    serverid1mem = ''.join(map(str, serverid1memdata))
+
+    # find players from cweb.get_host_stats_server
+    serverid1playerdata = re.findall(r'onlineplayers:(.*?)players', str(serverid1assembled))
+    serverid1player = ''.join(map(str, serverid1playerdata))
+
+    # checks what status it is and then selects the right status
+    if srvrunning in serverid1:
+        embedstatus.add_field(name=serverid1name,
+                              value="ID 1 " + serverid1name + " Server Status: Online CPU Usage:" + serverid1cpu + "% Memory:" + serverid1mem + " Players Online:" + serverid1player,
+                              inline=False)
+    if srvstopped in serverid1:
+        embedstatus.add_field(name=serverid1name, value="ID 1 " + serverid1name + " Server Status: Stopped",
+                              inline=False)
+    if srvcrashed in serverid1:
+        embedstatus.add_field(name=serverid1name, value="ID 1 " + serverid1name + " Server Status: Crashed",
+                              inline=False)
             
 # starting bot
 To start the bot up, open a cmd window in its directory and type
