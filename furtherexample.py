@@ -1,107 +1,181 @@
-        serverid1info = re.findall(r'serverid: 1(.*?)serverid: 2',str(datavaluesassembled))
-        serverid1assembled = ''.join(map(str, serverid1info))
+    # -------------------------------------------------------------------------
 
-        datasurvival = re.findall(r'Survival(.*?)},',str(data))
-        survivalstripped = [w.translate(datastrip) for w in datasurvival]
-        survivalassembled = " ".join(survivalstripped)
+    # name of server id 1
+    serverid1name = "Survival"
 
-        SURVCPU = re.findall(r'cpuusage:(.*?)memoryusage',str(serverid1assembled))
-        SURVCPUASSEMBLED = ''.join(map(str, SURVCPU))
-        SURVMEM = re.findall(r'memoryusage:(.*?)maxplayers',str(serverid1assembled))
-        SURVMEMASSEMBLED = ''.join(map(str, SURVMEM))
-        SURVPLAYERS = re.findall(r'onlineplayers:(.*?)players',str(serverid1assembled))
-        SURVPLAYERSASSEMBLED = ''.join(map(str, SURVPLAYERS))
+    # this is attempt of cleaning the code up by making it smaller, this finds the online status of the server
+    serverid1 = " ".join([w.translate(datastrip) for w in re.findall(r'Survival(.*?)},', str(data))])
 
-        if srvrunning in survivalassembled:
-            embedstatus.add_field(name="Survival", value="ID 1 Survival Server Status: Online CPU Usage:" + SURVCPUASSEMBLED +"% Memory:" + SURVMEMASSEMBLED + " Players Online:" + SURVPLAYERSASSEMBLED, inline=False)
-        if srvstopped in survivalassembled:
-            embedstatus.add_field(name="Survival", value="ID 1 Survival Server Status: Stopped", inline=False)
-        if srvcrashed in survivalassembled:
-            embedstatus.add_field(name="Survival", value="ID 1 Survival Server Status: Crashed", inline=False)
+    # this for grabbing server stats
+    serverid1info = re.findall(r'serverid: 1(.*?)serverid: 2', str(datavaluesassembled))
+    serverid1assembled = ''.join(map(str, serverid1info))
 
-        databedwars = re.findall(r'Bedwars(.*?)},', str(data))
-        bedwarsstripped = [w.translate(datastrip) for w in databedwars]
-        bedwarsassembled = " ".join(bedwarsstripped)
+    # find cpu from cweb.get_host_stats_server
+    serverid1cpudata = re.findall(r'cpuusage:(.*?)memoryusage', str(serverid1assembled))
+    serverid1cpu = ''.join(map(str, serverid1cpudata))
 
-        serverid2info = re.findall(r'serverid: 2(.*?)serverid: 3',str(datavaluesassembled))
-        serverid2assembled = ''.join(map(str, serverid2info))
+    # find mem from cweb.get_host_stats_server
+    serverid1memdata = re.findall(r'memoryusage:(.*?)maxplayers', str(serverid1assembled))
+    serverid1mem = ''.join(map(str, serverid1memdata))
 
-        BDWARSCPU = re.findall(r'cpuusage:(.*?)memoryusage',str(serverid2assembled))
-        BDWARSCPUASSEMBLED = ''.join(map(str, BDWARSCPU))
-        BDWARSVMEM = re.findall(r'memoryusage:(.*?)maxplayers',str(serverid2assembled))
-        BDWARSMEMASSEMBLED = ''.join(map(str, BDWARSVMEM))
-        BDWARSPLAYERS = re.findall(r'onlineplayers:(.*?)players',str(serverid2assembled))
-        BDWARSPLAYERSASSEMBLED = ''.join(map(str, BDWARSPLAYERS))
+    # find players from cweb.get_host_stats_server
+    serverid1playerdata = re.findall(r'onlineplayers:(.*?)players', str(serverid1assembled))
+    serverid1player = ''.join(map(str, serverid1playerdata))
 
-        if srvrunning in bedwarsassembled:
-            embedstatus.add_field(name="Bedwars", value="ID 2 Bedwars Server Status: Online CPU Usage:" + BDWARSCPUASSEMBLED +"% Memory:" + BDWARSMEMASSEMBLED + " Players Online:" + BDWARSPLAYERSASSEMBLED, inline=False)
-        if srvstopped in bedwarsassembled:
-            embedstatus.add_field(name="Bedwars", value="ID 2 Bedwars Server Status: Stopped", inline=False)
-        if srvcrashed in bedwarsassembled:
-            embedstatus.add_field(name="Bedwars", value="ID 2 Bedwars Server Status: Crashed", inline=False)
+    # checks what status it is and then selects the right status
+    if srvrunning in serverid1:
+        embedstatus.add_field(name=serverid1name,
+                              value="ID 1 " + serverid1name + " Server Status: Online CPU Usage:" + serverid1cpu + "% Memory:" + serverid1mem + " Players Online:" + serverid1player,
+                              inline=False)
+    if srvstopped in serverid1:
+        embedstatus.add_field(name=serverid1name, value="ID 1 " + serverid1name + " Server Status: Stopped",
+                              inline=False)
+    if srvcrashed in serverid1:
+        embedstatus.add_field(name=serverid1name, value="ID 1 " + serverid1name + " Server Status: Crashed",
+                              inline=False)
 
-        serverid3info = re.findall(r'serverid: 3(.*?)serverid: 4',str(datavaluesassembled))
-        serverid3assembled = ''.join(map(str, serverid3info))
+    # -------------------------------------------------------------------------
 
-        LOBBYCPU = re.findall(r'cpuusage:(.*?)memoryusage',str(serverid3assembled))
-        LOBBYCPUASSEMBLED = ''.join(map(str, LOBBYCPU))
-        LOBBYMEM = re.findall(r'memoryusage:(.*?)maxplayers',str(serverid3assembled))
-        LOBBYMEMASSEMBLED = ''.join(map(str, LOBBYMEM))
-        LOBBYPLAYERS = re.findall(r'onlineplayers:(.*?)players',str(serverid3assembled))
-        LOBBYPLAYERSASSEMBLED = ''.join(map(str, LOBBYPLAYERS))
+    # name of server id 2
+    serverid2name = "Bedwars"
 
-        datalobby = re.findall(r'Lobby(.*?)},', str(data))
-        lobbystripped = [w.translate(datastrip) for w in datalobby]
-        lobbyassembled = " ".join(lobbystripped)
+    # this is attempt of cleaning the code up by making it smaller, this finds the online status of the server
+    serverid2 = " ".join([w.translate(datastrip) for w in re.findall(r'Bedwars(.*?)},', str(data))])
 
-        if srvrunning in lobbyassembled:
-            embedstatus.add_field(name="Lobby", value="ID 3 Lobby Server Status: Online CPU Usage:" + LOBBYCPUASSEMBLED +"% Memory:" + LOBBYMEMASSEMBLED + " Players Online:" + LOBBYPLAYERSASSEMBLED, inline=False)
-        if srvstopped in lobbyassembled:
-            embedstatus.add_field(name="Lobby", value="ID 3 Lobby Server Status: Stopped", inline=False)
-        if srvcrashed in lobbyassembled:
-            embedstatus.add_field(name="Lobby", value="ID 3 Lobby Server Status: Crashed", inline=False)
+    # this for grabbing server stats
+    serverid2info = re.findall(r'serverid: 2(.*?)serverid: 3', str(datavaluesassembled))
+    serverid2assembled = ''.join(map(str, serverid2info))
 
-        serverid4info = re.findall(r'serverid: 4(.*?)serverid: 5',str(datavaluesassembled))
-        serverid4assembled = ''.join(map(str, serverid4info))
+    # find cpu from cweb.get_host_stats_server
+    serverid2cpudata = re.findall(r'cpuusage:(.*?)memoryusage', str(serverid2assembled))
+    serverid2cpu = ''.join(map(str, serverid2cpudata))
 
-        SKYBLOCKCPU = re.findall(r'cpuusage:(.*?)memoryusage',str(serverid4assembled))
-        SKYBLOCKCPUASSEMBLED = ''.join(map(str, SKYBLOCKCPU))
-        SKYBLOCKMEM = re.findall(r'memoryusage:(.*?)maxplayers',str(serverid4assembled))
-        SKYBLOCKMEMASSEMBLED = ''.join(map(str, SKYBLOCKMEM))
-        SKYBLOCKPLAYERS = re.findall(r'onlineplayers:(.*?)players',str(serverid4assembled))
-        SKYBLOCKPLAYERSASSEMBLED = ''.join(map(str, SKYBLOCKPLAYERS))
+    # find mem from cweb.get_host_stats_server
+    serverid2memdata = re.findall(r'memoryusage:(.*?)maxplayers', str(serverid2assembled))
+    serverid2mem = ''.join(map(str, serverid2memdata))
 
-        dataskyblock = re.findall(r'Skyblock(.*?)},', str(data))
-        skyblockstripped = [w.translate(datastrip) for w in dataskyblock]
-        skyblockassembled = " ".join(skyblockstripped)
+    # find players from cweb.get_host_stats_server
+    serverid2playerdata = re.findall(r'onlineplayers:(.*?)players', str(serverid2assembled))
+    serverid2player = ''.join(map(str, serverid2playerdata))
 
-        if srvrunning in skyblockassembled:
-            embedstatus.add_field(name="Skyblock", value="ID 4 Skyblock Server Status: Online CPU Usage:" + SKYBLOCKCPUASSEMBLED +"% Memory:" + SKYBLOCKMEMASSEMBLED + " Players Online:" + SKYBLOCKPLAYERSASSEMBLED , inline=False)
-        if srvstopped in skyblockassembled:
-            embedstatus.add_field(name="Skyblock", value="ID 4 Skyblock Server Status: Stopped", inline=False)
-        if srvcrashed in skyblockassembled:
-            embedstatus.add_field(name="Skyblock", value="ID 4 Skyblock Server Status: Crashed", inline=False)
+    # checks what status it is and then selects the right status
+    if srvrunning in serverid2:
+        embedstatus.add_field(name=serverid2name,
+                              value="ID 2 " + serverid2name + " Server Status: Online CPU Usage:" + serverid2cpu + "% Memory:" + serverid2mem + " Players Online:" + serverid2player,
+                              inline=False)
+    if srvstopped in serverid2:
+        embedstatus.add_field(name=serverid2name, value="ID 2 " + serverid2name + " Server Status: Stopped",
+                              inline=False)
+    if srvcrashed in serverid2:
+        embedstatus.add_field(name=serverid2name, value="ID 2 " + serverid2name + " Server Status: Crashed",
+                              inline=False)
 
-        serverid5info = re.findall(r'serverid: 5(.*?)Proxy',str(datavaluesassembled))
-        serverid5assembled = ''.join(map(str, serverid5info))
-        print("datavaluesassembled")
-        print(datavaluesassembled)
-        print("ID5")
-        print(serverid5assembled)
-        PROXYCPU = re.findall(r'cpuusage:(.*?)memoryusage',str(serverid5assembled))
-        PROXYCPUASSEMBLED = ''.join(map(str, PROXYCPU))
-        PROXYMEM = re.findall(r'memoryusage:(.*?)maxplayers',str(serverid5assembled))
-        PROXYMEMASSEMBLED = ''.join(map(str, PROXYMEM))
-        PROXYPLAYERS = re.findall(r'onlineplayers:(.*?)players',str(serverid5assembled))
-        PROXYPLAYERSASSEMBLED = ''.join(map(str, PROXYPLAYERS))
+    # -------------------------------------------------------------------------
 
-        dataproxy = re.findall(r'Proxy(.*?)]', str(data))
-        proxystripped = [w.translate(datastrip) for w in dataproxy]
-        proxyassembled = " ".join(proxystripped)
+    # name of server id 3
+    serverid3name = "Lobby"
 
-        if srvrunning in proxyassembled:
-            embedstatus.add_field(name="Proxy", value="ID 5 Proxy Server Status: Online CPU Usage:" + PROXYCPUASSEMBLED +"% Memory:" + PROXYMEMASSEMBLED + " Players Online:" + PROXYPLAYERSASSEMBLED, inline=False)
-        if srvstopped in proxyassembled:
-            embedstatus.add_field(name="Proxy", value="ID 5 Proxy Server Status: Stopped", inline=False)
-        if srvcrashed in proxyassembled:
-            embedstatus.add_field(name="Proxy", value="ID 5 Proxy Server Status: Crashed", inline=False)
+    # this is attempt of cleaning the code up by making it smaller, this finds the online status of the server
+    serverid3 = " ".join([w.translate(datastrip) for w in re.findall(r'Lobby(.*?)},', str(data))])
+
+    # this for grabbing server stats
+    serverid3info = re.findall(r'serverid: 3(.*?)serverid: 4', str(datavaluesassembled))
+    serverid3assembled = ''.join(map(str, serverid3info))
+
+    # find cpu from cweb.get_host_stats_server
+    serverid3cpudata = re.findall(r'cpuusage:(.*?)memoryusage', str(serverid3assembled))
+    serverid3cpu = ''.join(map(str, serverid3cpudata))
+
+    # find mem from cweb.get_host_stats_server
+    serverid3memdata = re.findall(r'memoryusage:(.*?)maxplayers', str(serverid3assembled))
+    serverid3mem = ''.join(map(str, serverid3memdata))
+
+    # find players from cweb.get_host_stats_server
+    serverid3playerdata = re.findall(r'onlineplayers:(.*?)players', str(serverid3assembled))
+    serverid3player = ''.join(map(str, serverid3playerdata))
+
+    # checks what status it is and then selects the right status
+    if srvrunning in serverid3:
+        embedstatus.add_field(name=serverid3name,
+                              value="ID 3 " + serverid3name + " Server Status: Online CPU Usage:" + serverid3cpu + "% Memory:" + serverid3mem + " Players Online:" + serverid3player,
+                              inline=False)
+    if srvstopped in serverid3:
+        embedstatus.add_field(name=serverid3name, value="ID 3 " + serverid3name + " Server Status: Stopped",
+                              inline=False)
+    if srvcrashed in serverid3:
+        embedstatus.add_field(name=serverid3name, value="ID 3 " + serverid3name + " Server Status: Crashed",
+                              inline=False)
+
+    # -------------------------------------------------------------------------
+
+    # name of server id 4
+    serverid4name = "Skyblock"
+
+    # this is attempt of cleaning the code up by making it smaller, this finds the online status of the server
+    serverid4 = " ".join([w.translate(datastrip) for w in re.findall(r'Skyblock(.*?)},', str(data))])
+
+    # this for grabbing server stats
+    serverid4info = re.findall(r'serverid: 4(.*?)serverid: 5', str(datavaluesassembled))
+    serverid4assembled = ''.join(map(str, serverid4info))
+
+    # find cpu from cweb.get_host_stats_server
+    serverid4cpudata = re.findall(r'cpuusage:(.*?)memoryusage', str(serverid4assembled))
+    serverid4cpu = ''.join(map(str, serverid4cpudata))
+
+    # find mem from cweb.get_host_stats_server
+    serverid4memdata = re.findall(r'memoryusage:(.*?)maxplayers', str(serverid4assembled))
+    serverid4mem = ''.join(map(str, serverid4memdata))
+
+    # find players from cweb.get_host_stats_server
+    serverid4playerdata = re.findall(r'onlineplayers:(.*?)players', str(serverid4assembled))
+    serverid4player = ''.join(map(str, serverid4playerdata))
+
+    # checks what status it is and then selects the right status
+    if srvrunning in serverid4:
+        embedstatus.add_field(name=serverid4name,
+                              value="ID 4 " + serverid4name + " Server Status: Online CPU Usage:" + serverid4cpu + "% Memory:" + serverid4mem + " Players Online:" + serverid4player,
+                              inline=False)
+    if srvstopped in serverid4:
+        embedstatus.add_field(name=serverid4name, value="ID 4 " + serverid4name + " Server Status: Stopped",
+                              inline=False)
+    if srvcrashed in serverid4:
+        embedstatus.add_field(name=serverid4name, value="ID 4 " + serverid4name + " Server Status: Crashed",
+                              inline=False)
+
+    # -------------------------------------------------------------------------
+
+    # name of server id 5
+    serverid5name = "Proxy"
+
+    # this is attempt of cleaning the code up by making it smaller, this finds the online status of the server
+    serverid5 = " ".join([w.translate(datastrip) for w in re.findall(r'Proxy(.*?)]', str(data))])
+
+    # this for grabbing server stats
+    serverid5info = re.findall(r'serverid: 5(.*?)Proxy', str(datavaluesassembled))
+    serverid5assembled = ''.join(map(str, serverid5info))
+
+    # find cpu from cweb.get_host_stats_server
+    serverid5cpudata = re.findall(r'cpuusage:(.*?)memoryusage', str(serverid5assembled))
+    serverid5cpu = ''.join(map(str, serverid5cpudata))
+
+    # find mem from cweb.get_host_stats_server
+    serverid5memdata = re.findall(r'memoryusage:(.*?)maxplayers', str(serverid5assembled))
+    serverid5mem = ''.join(map(str, serverid5memdata))
+
+    # find players from cweb.get_host_stats_server
+    serverid5playerdata = re.findall(r'onlineplayers:(.*?)players', str(serverid5assembled))
+    serverid5player = ''.join(map(str, serverid5playerdata))
+
+    # checks what status it is and then selects the right status
+    if srvrunning in serverid5:
+        embedstatus.add_field(name=serverid5name,
+                              value="ID 5 " + serverid5name + " Server Status: Online CPU Usage:" + serverid5cpu + "% Memory:" + serverid5mem + " Players Online:" + serverid5player,
+                              inline=False)
+    if srvstopped in serverid5:
+        embedstatus.add_field(name=serverid5name, value="ID 5 " + serverid5name + " Server Status: Stopped",
+                              inline=False)
+    if srvcrashed in serverid5:
+        embedstatus.add_field(name=serverid5name, value="ID 5 " + serverid5name + " Server Status: Crashed",
+                              inline=False)
+
+    # -------------------------------------------------------------------------
