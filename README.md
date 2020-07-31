@@ -155,13 +155,13 @@ If you require or would like to look at a further example. Look at furtherexampl
 # SINGLE SERVER
 Go to Line 274 and add your first server. Use this as a example
 Use this code if you are only hosting a single server on the crafty panel
-WHERE IT SAYS serverid: 2, you will need to change it to the first word of your server name and chane serverid1name to your server
+WHERE IT SAYS Survival, you will need to change it to the first word of your server name and change serverid1name variable to your server
                                                             
     # name of server id 1
-    serverid1name = "Survival"
+    serverid1name = "Survival" # change word Survival to your own survival name
 
     # this is attempt of cleaning the code up by making it smaller, this finds the online status of the server
-    serverid1 = " ".join([w.translate(datastrip) for w in re.findall(r'Survival(.*?)},', str(data))])
+    serverid1 = " ".join([w.translate(datastrip) for w in re.findall(r'Survival(.*?)]', str(data))]) # change word Survival to first word of your server name
 
     # this for grabbing server stats
     serverid1info = re.findall(r'serverid: 1(.*?)serverid: 2', str(datavaluesassembled))
