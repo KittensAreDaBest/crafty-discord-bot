@@ -74,7 +74,7 @@ Then supply a Discord Role [NAME] which the bot will consider allowed to run adm
 # MUTIPLE SERVERS
 Go to Line 239 and add your first server. Use this as a examplem Also make sure to adjust variables as needed. [ONLY IF YOU ARE USING MUTIPLE SERVERS, SINGLE SERVER CODE BELOW]. 
 
-          # name of server id 1
+    # name of server id 1
     serverid1name = "Survival"
 
     # this is attempt of cleaning the code up by making it smaller, this finds the online status of the server
