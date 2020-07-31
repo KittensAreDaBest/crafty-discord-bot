@@ -59,7 +59,7 @@ Backups the server with the supplied ID
 <img width="413" alt="backup" src="https://user-images.githubusercontent.com/60989180/88817947-7e100200-d201-11ea-9a03-78b73afb5071.png">
 
 !send [ID] [Command]
-Sends the Command to the server with the supplied ID and Command
+Sends the Command to the server with the supplied ID and Command [I plan on fixing the run: true and making it just say true in a future release]
 
 <img width="318" alt="send" src="https://user-images.githubusercontent.com/60989180/88817929-79e3e480-d201-11ea-9e89-4b91870fa728.png">
 
