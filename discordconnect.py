@@ -178,9 +178,8 @@ async def hostinfo(message):
 
         nodotto = string.punctuation
         nodottoaf = nodotto.replace(".", "")
-        datastripnodot = str.maketrans("", "", r"[{}]".format(nodottoaf))
 
-        datastrip = str.maketrans("", "", datastripnodot)
+        datastrip = str.maketrans("", "", nodottoaf)
 
         cpuassembled = " ".join([w.translate(datastrip) for w in re.findall(r'cpu_usage(.*?),', str(hostdata))])
 
