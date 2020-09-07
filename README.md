@@ -2,7 +2,7 @@
 A discord bot using the crafty-client API to control Crafty Controller
 
 # need-help
-Need any help? If so, contact CatsAreDaBest#3054 on Discord
+Need any help? If so, contact Kittens#3054 on Discord
 
 # pleasenote
 This bot uses a custom version of the crafty-client api which is provided. what it changes is that in craftyweb.py it seperates the stats from get_host_status to get_host_stats_pc [grabs pc stats] and get_host_status_server [grabs server stats]. I plan on soon making it work without modification
