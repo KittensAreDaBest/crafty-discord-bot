@@ -1,0 +1,7 @@
+{"bot_token": "discordbottoken",
+ "api_token": "apitoken",
+ "crafty_url": "https://localhost:8000",
+ "log_channel": 0,
+ "admin_role": 0,
+ "prefix": "!",
+ "ssl_check": "False"}
