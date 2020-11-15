@@ -5,15 +5,15 @@ A discord bot to control Crafty Controller
 Need any help? If so, contact Kittens#3054 on the Crafty Controller Discord https://discord.gg/9VJPhCE
 
 # command
-!help - Help Command
-!serverinfo - Info about the servers in Crafty Controller
-!hostinfo - Info about the Host
-!ping - Latency between Discord and the Bot
-!start serverid - Start a Server
-!stop serverid - Stop a Server
-!restart serverid - Restart a Server
-!backup serverid - Backup a Server
-!send serverid command - Send a Command to a server
+    !help - Help Command
+    !serverinfo - Info about the servers in Crafty Controller
+    !hostinfo - Info about the Host
+    !ping - Latency between Discord and the Bot
+    !start serverid - Start a Server
+    !stop serverid - Stop a Server
+    !restart serverid - Restart a Server
+    !backup serverid - Backup a Server
+    !send serverid command - Send a Command to a server
 
 # installation
 Make sure you have Python Installed First
