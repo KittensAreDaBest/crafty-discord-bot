@@ -2,7 +2,7 @@
 A discord bot to control Crafty Controller
 
 # need-help
-Need any help? If so, contact Kittens#0001 on the Crafty Controller Discord https://discord.gg/9VJPhCE
+Need any help? If so, contact MythicalKitten#0001 on the Crafty Controller Discord https://discord.gg/9VJPhCE
 
 # command
     !help - Help Command
